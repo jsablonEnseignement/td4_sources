@@ -1,16 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cors from "cors";
 import { router } from "./routes/students.route";
-
-dotenv.config();
 
 const hostname = "127.0.0.1";
 const port = 5000;
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_DOMAIN}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+  `mongodb://localhost:27017/eilco_web`
 );
 
 const db = mongoose.connection;

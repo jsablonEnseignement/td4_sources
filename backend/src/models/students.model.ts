@@ -1,4 +1,4 @@
-import { model, Schema, Types } from "mongoose";
+import { Document, model, Schema, Types } from "mongoose";
 
 const StudentSchema: Schema = new Schema(
   {
@@ -18,14 +18,16 @@ const StudentSchema: Schema = new Schema(
   { versionKey: false }
 );
 
-export interface Student {
+export interface IStudent {
   _id: Types.ObjectId;
   name: String;
   firstname: String;
   age: Number;
 }
 
-export const StudentModel = model(
+export interface Student extends Omit<IStudent, "_id">, Document {}
+
+export const StudentsModel = model(
   "students",
   StudentSchema
 );
